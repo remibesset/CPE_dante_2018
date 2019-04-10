@@ -13,7 +13,7 @@ char *load_file_in_mem(char const *filepath, char *buffer, int size)
 
     fd = open(filepath, O_RDONLY);
     if (fd == -1)
-        return ("a");
+        exit(84);
     read(fd, buffer, size);
     close(fd);
     return (buffer);
