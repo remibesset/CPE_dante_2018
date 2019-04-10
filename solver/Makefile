@@ -5,16 +5,16 @@
 ## Makfile Lem-in
 ##
 
-SRC_SOL = 	solver_folder/main.c	\
-			solver_folder/init.c	\
-			solver_folder/algo.c	\
-			solver_folder/detect.c
+SRC_SOL = 	main.c	\
+			init.c	\
+			algo.c	\
+			detect.c
 
-CFLAGS = -g -Iinclude
+CFLAGS = -g
 
 OBJ_SOL = $(SRC_SOL:.c=.o)
 
-O_SOL = solver_folder/*.o
+O_SOL = *.o
 
 NAME_SOL = solver
 
