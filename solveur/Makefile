@@ -18,8 +18,6 @@ O_SOL = *.o
 
 NAME_SOL = solver
 
-NAME_GEN = generator
-
 GCCWAY = gcc -o
 
 all: $(NAME_SOL)

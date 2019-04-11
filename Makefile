@@ -5,20 +5,26 @@
 ## makefile
 ##
 
-all:
-	$(MAKE) -C generateur
-	$(MAKE) -C solveur
+NAME = see_below
+
+SOL_PATH = solveur/
+
+GEN_PATH = generateur/
+
+all:	$(NAME)
+
+$(NAME):
+	$(MAKE) -C $(GEN_PATH)
+	$(MAKE) -C $(SOL_PATH)
 
 clean:
-	$(MAKE) clean -C generateur
-	$(MAKE) clean -C solveur
+	$(MAKE) clean -C $(GEN_PATH)
+	$(MAKE) clean -C $(SOL_PATH)
 
 fclean:
-	$(MAKE) fclean -C generateur
-	$(MAKE) fclean -C solveur
+	$(MAKE) fclean -C $(GEN_PATH)
+	$(MAKE) fclean -C $(SOL_PATH)
 
-re:
-	$(MAKE) re -C generateur
-	$(MAKE) re -C solveur
+re: fclean all
 
 .PHONY: all clean fclean re
