@@ -12,6 +12,7 @@ SRC = src/main.c \
 	src/back_tracking.c \
 	src/back_tracking2.c \
 	src/finish_imperfection.c \
+	src/second_algo.c \
 
 CFLAGS = -g -Iinclude
 
