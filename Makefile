@@ -7,9 +7,9 @@
 
 NAME = see_below
 
-SOL_PATH = solveur/
+SOL_PATH = solver/
 
-GEN_PATH = generateur/
+GEN_PATH = generator/
 
 all:	$(NAME)
 
