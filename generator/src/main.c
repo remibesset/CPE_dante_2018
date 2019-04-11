@@ -25,11 +25,11 @@ int main(int ac, char **av)
 {
     gen_t gen;
 
-    if (ac == 3 || (ac == 4 && str_compare(av[3], "imparfait") == 1)) {
+    if (ac == 3 || (ac == 4 && str_compare(av[3], "imperfect") == 1)) {
         if (take_verif_size(av, &gen) == ERROR_NUM)
             return (ERROR_NUM);
         make_maze(&gen, 0);
-    } else if (ac == 4 && str_compare(av[3], "parfait") == 1) {
+    } else if (ac == 4 && str_compare(av[3], "perfect") == 1) {
         if (take_verif_size(av, &gen) == ERROR_NUM)
             return (ERROR_NUM);
         make_maze(&gen, 1);
