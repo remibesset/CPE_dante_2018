@@ -9,15 +9,17 @@
 
 int **set_obstacle(int **mappint, char **map, lab_t *maze)
 {
-    for (int i = 0; i < maze->size_y - 1; i++)
-        for (int j = 0; j < maze->size_x - 1; j++)
+    for (int i = 0; i <= maze->size_y; i++)
+        for (int j = 0; j <= maze->size_x; j++) {
             mappint[i][j] = (map[i][j] == 'X') ? -1 : 0;
-    mappint[maze->size_y - 1][maze->size_x - 1] = 1;
+        }
+    mappint[maze->size_y][maze->size_x] = 1;
     return (mappint);
 }
 
 int **find_cond(int **mappint, int i, int j, lab_t *maze)
 {
+    printf("%d %d\n", i, j);
     if (mappint[i][j] == maze->number) {
         if (i > 0 && (mappint[i - 1][j] > mappint[i][j] + 1
             || mappint[i - 1][j] == 0))
@@ -40,8 +42,8 @@ int **find_and_set(int **mappint, char **map, lab_t *maze)
     int i;
     int j;
 
-    for (i = maze->size_y - 1; i >= 0; i--)
-        for (j = maze->size_x - 1; j >= 0; j--) {
+    for (i = maze->size_y; i >= 0; i--)
+        for (j = maze->size_x; j >= 0; j--) {
             mappint = find_cond(mappint, i, j, maze);
         }
     maze->number++;

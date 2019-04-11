@@ -21,8 +21,10 @@ char *load_file_in_mem(char const *filepath, char *buffer, int size)
 
 char *file_to_buffer(char *filepath, int size)
 {
-    char *buffer = malloc(sizeof(char) * size + 1);
+    char *buffer = malloc(sizeof(char) * size + 2);
 
+    for (int i = 0; i < size + 1; i++)
+        buffer[i] = '\0';
     buffer = load_file_in_mem(filepath, buffer, size);
     return (buffer);
 }
@@ -31,10 +33,10 @@ char **malloc_tab(char **tab, char *buffer, lab_t *maze)
 {
     int k = 0;
 
-    maze->size_x = strline(buffer);
+    maze->size_x = strline(buffer) - 1;
     maze->size_y = nb_of_line(buffer);
     tab = malloc(sizeof(char *) * (maze->size_y + 1));
-    for (int i = 0; i < maze->size_y; i++) {
+    for (int i = 0; i <= maze->size_y; i++) {
         tab[i] = malloc(sizeof(char) * (maze->size_x + 1));
         for (int j = 0; j < strline(buffer); j++) {
             tab[i][j] = buffer[k];
@@ -56,10 +58,15 @@ char **load_map(char **map, char *filepath, lab_t *maze)
 
 int **init_int(int **mappint, lab_t *maze)
 {
-    mappint = malloc(sizeof(int *) * maze->size_y);
+    mappint = malloc(sizeof(int *) * maze->size_y + 1);
 
-    for (int i = 0; i < maze->size_y; i++) {
-        mappint[i] = malloc(sizeof(int) * maze->size_x);
+    for (int i = 0; i <= maze->size_y; i++) {
+        mappint[i] = malloc(sizeof(int) * (maze->size_x + 1));
+    }
+    for (int i = 0; i <= maze->size_y; i++) {
+        for (int j = 0; j <= maze->size_x; j++) {
+            mappint[i][j] = 0;
+        }
     }
     return (mappint);
 }

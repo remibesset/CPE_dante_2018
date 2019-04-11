@@ -27,14 +27,23 @@ char **draw_way(lab_t *maze)
     return (maze->map);
 }
 
-void solver(char *filepath, lab_t *maze)
+int solver(char *filepath, lab_t *maze)
 {
+    printf("A\n");
     maze->map = load_map(maze->map, filepath, maze);
+    printf("B\n");
     maze->mappint = init_int(maze->mappint, maze);
+    printf("C\n");
     maze->mappint = set_obstacle(maze->mappint, maze->map, maze);
+    printf("D\n");
     maze->mappint = draw_ints(maze->map, maze->mappint, maze);
+    printf("E\n");
+   //if (maze->mappint[maze->size_x - 1][maze->size_y - 1] == 1)
+        //return (84);
     maze->map = draw_way(maze);
+    printf("F\n");
     draw_map(maze->map, maze);
+    return (0);
 }
 
 int main(int ac, char **av)
@@ -43,6 +52,5 @@ int main(int ac, char **av)
 
     if (ac != 2)
         return (84);
-    solver(av[1], &maze);
-    return (0);
+    return (solver(av[1], &maze));
 }
