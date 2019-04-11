@@ -49,10 +49,10 @@ void create_map_in_str(gen_t *gen)
     (gen->size.x * gen->size.y + gen->size.y + 1));
     int k = 0;
 
-    for (int i = 0; i < gen->size.y - 1; i++) {
+    for (int i = 0; i < gen->size.y; i++) {
         if (i != 0)
             map[k++] = '\n';
-        for (int j = 0; j < gen->size.x - 1; j++)
+        for (int j = 0; j < gen->size.x; j++)
             map[k++] = (gen->map[i][j] == 2) ? '*': 'X';
     }
     map[k] = '\0';

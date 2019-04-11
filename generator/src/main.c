@@ -15,9 +15,6 @@ void make_maze(gen_t *gen, int imperfection)
     gen->imperfection = imperfection;
     gen_path(gen);
     check_go_finsh(gen);
-    if (imperfection == 1) {
-        put_imperfection(gen);
-    }
     create_map_in_str(gen);
 }
 
