@@ -27,3 +27,15 @@ int take_verif_size(char **av, gen_t *gen)
     create_map(gen);
     return (0);
 }
+
+void *xmalloc(int size)
+{
+    void *ptr = malloc(size);
+    char err_msg[] = "Malloc failed !\n";
+
+    if (ptr == NULL) {
+        write(1, err_msg, my_strlen(err_msg));
+        exit(84);
+    }
+    return (ptr);
+}

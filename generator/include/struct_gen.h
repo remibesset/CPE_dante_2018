@@ -27,7 +27,7 @@ typedef struct gen_s
     coord_t start;
     coord_t end;
     coord_t pos_gen;
-    int **map;
+    char **map;
     int imperfection;
 }gen_t;
 
