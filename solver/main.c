@@ -38,7 +38,7 @@ int solver(char *filepath, lab_t *maze)
     printf("D\n");
     maze->mappint = draw_ints(maze->map, maze->mappint, maze);
     printf("E\n");
-   //if (maze->mappint[maze->size_x - 1][maze->size_y - 1] == 1)
+    //if (maze->mappint[maze->size_x - 1][maze->size_y - 1] == 1)
         //return (84);
     maze->map = draw_way(maze);
     printf("F\n");

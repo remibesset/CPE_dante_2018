@@ -11,6 +11,8 @@ void check_go_finsh(gen_t *gen)
 {
     int chiffre_rand = rand() % 2;
 
+    if (gen->size.x < 2 && gen->size.y < 2)
+        return;
     if (gen->map[gen->end.y][gen->end.x - 1] == 2)
         gen->map[gen->end.y][gen->end.x] = 2;
     else if (gen->map[gen->end.y - 1][gen->end.x - 1] == 2) {
