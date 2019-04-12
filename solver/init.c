@@ -29,44 +29,44 @@ char *file_to_buffer(char *filepath, int size)
     return (buffer);
 }
 
-char **malloc_tab(char **tab, char *buffer, lab_t *maze)
+void malloc_tab(lab_t *maze)
 {
     int k = 0;
 
-    maze->size_x = strline(buffer) - 1;
-    maze->size_y = nb_of_line(buffer);
-    tab = malloc(sizeof(char *) * (maze->size_y + 1));
-    for (int i = 0; i <= maze->size_y; i++) {
-        tab[i] = malloc(sizeof(char) * (maze->size_x + 1));
-        for (int j = 0; j < strline(buffer); j++) {
-            tab[i][j] = buffer[k];
+    maze->size_x = strline(maze->buffer);
+    maze->size_y = nb_of_line(maze->buffer);
+    maze->map = malloc(sizeof(char *) * maze->size_y);
+    for (int i = 0; i < maze->size_y; i++) {
+        maze->map[i] = malloc(sizeof(char) * (maze->size_x + 1));
+        maze->map[i][maze->size_x] = '\0';
+        for (int j = 0; j < maze->size_x; j++) {
+            maze->map[i][j] = maze->buffer[k];
             k++;
         }
         k++;
     }
-    return (tab);
 }
 
-char **load_map(char **map, char *filepath, lab_t *maze)
+void load_map(char *filepath, lab_t *maze)
 {
     int size = size_of_buffer(filepath);
-    char *buffer = file_to_buffer(filepath, size);
-    char **tab = malloc_tab(tab, buffer, maze);
-
-    return (tab);
+    maze->buffer = file_to_buffer(filepath, size);
+    malloc_tab(maze);
+    maze->map[maze->size_y - 1][maze->size_x - 1] = 'o';
 }
 
-int **init_int(int **mappint, lab_t *maze)
+void init_int(lab_t *maze)
 {
-    mappint = malloc(sizeof(int *) * maze->size_y + 1);
+    maze->mi = malloc(sizeof(int *) * maze->size_y);
 
-    for (int i = 0; i <= maze->size_y; i++) {
-        mappint[i] = malloc(sizeof(int) * (maze->size_x + 1));
+    for (int i = 0; i < maze->size_y; i++) {
+        maze->mi[i] = malloc(sizeof(int) * maze->size_x + 1);
     }
-    for (int i = 0; i <= maze->size_y; i++) {
-        for (int j = 0; j <= maze->size_x; j++) {
-            mappint[i][j] = 0;
+    for (int i = 0; i < maze->size_y; i++) {
+        for (int j = 0; j < maze->size_x; j++) {
+            maze->mi[i][j] = (maze->map[i][j] == 'X') ? -1 : 0;
         }
     }
-    return (mappint);
+    maze->mi[0][0] = 1;
+    maze->actnb = 0;
 }

@@ -36,25 +36,17 @@ int nb_of_line(char *buffer)
             j++;
         i++;
     }
+    j++;
     return (j);
 }
 
-int is_next(lab_t *maze, int *pos, int number)
+int nb_of_number(lab_t *maze)
 {
-    if (pos[0] > 0 && maze->mappint[pos[0] - 1][pos[1]] == number - 1) {
-        maze->map[pos[0] - 1][pos[1]] = 'o';
-        return (1);
-    } if (pos[1] > 0 && maze->mappint[pos[0]][pos[1] - 1] == number - 1) {
-        maze->map[pos[0]][pos[1] - 1] = 'o';
-        return (1);
-    } if (pos[0] < maze->size_y - 1
-    && maze->mappint[pos[0] + 1][pos[1]] == number - 1) {
-        maze->map[pos[0] + 1][pos[1]] = 'o';
-        return (1);
-    } if (pos[1] < maze->size_x - 1
-    && maze->mappint[pos[0]][pos[1] + 1] == number - 1) {
-        maze->map[pos[0]][pos[1] + 1] = 'o';
-        return (1);
-    }
-    return (0);
+    int nb = 0;
+
+    for (int i = 0; i < maze->size_y; i++)
+        for (int j = 0; j < maze->size_x; j++)
+            nb = (maze->mi[i][j] == maze->number)
+            ? nb + 1 : nb;
+    return (nb);
 }

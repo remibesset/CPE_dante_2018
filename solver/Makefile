@@ -5,10 +5,11 @@
 ## Makfile Lem-in
 ##
 
-SRC_SOL = 	main.c	\
-			init.c	\
-			algo.c	\
-			detect.c
+SRC_SOL = 	main.c		\
+			init.c		\
+			algo.c		\
+			detect.c 	\
+			setway.c
 
 CFLAGS = -g
 
