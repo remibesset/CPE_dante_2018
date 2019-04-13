@@ -14,6 +14,8 @@ void make_maze(gen_t *gen, int imperfection)
     gen->pos_gen = (coord_t) gen->start;
     gen->imperfection = imperfection;
     gen_path(gen);
+    if (imperfection == 1)
+        put_imperfection(gen);
     check_go_finsh(gen);
     create_map_in_str(gen);
 }
@@ -21,12 +23,12 @@ void make_maze(gen_t *gen, int imperfection)
 void make_maze_second(gen_t *gen, int imperfection)
 {
     srand(time(NULL));
-    gen->map[gen->start.x][gen->start.y] = 2;
+    gen->map[gen->start.y][gen->start.x] = 2;
     gen->imperfection = imperfection;
     change_map_second(gen);
+    gen->map[gen->end.y][gen->end.x] = 2;
     if (imperfection == 1)
         put_imperfection(gen);
-    check_go_finsh(gen);
     create_map_in_str(gen);
 }
 

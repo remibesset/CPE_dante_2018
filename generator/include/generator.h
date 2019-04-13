@@ -39,6 +39,8 @@ int put_imperfection(gen_t *gen);
 //back_tracking
 int gen_path(gen_t *gen);
 int check_tab_mouv(int *tab);
+void switch_direction(int j, gen_t *gen);
+void make_path(gen_t *gen, int x, int y);
 
 //second algo
 void change_map_second(gen_t *gen);

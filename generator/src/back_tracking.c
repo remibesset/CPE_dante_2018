@@ -29,8 +29,7 @@ void add_possibilities(gen_t *gen, int **tab)
 
 void make_path(gen_t *gen, int x, int y)
 {
-    if (gen->map[gen->pos_gen.y + y][gen->pos_gen.x + x] != 2 ||
-    gen->imperfection == 1) {
+    if (gen->map[gen->pos_gen.y + y][gen->pos_gen.x + x] != 2) {
         gen->map[gen->pos_gen.y + y][gen->pos_gen.x + x] = 2;
         if (x != 0)
             gen->map[gen->pos_gen.y][gen->pos_gen.x + (x / 2)] = 2;
@@ -62,14 +61,7 @@ int random_route(gen_t *gen, int **tab)
 
     random_max = rand() % j;
     j = tab_oui[random_max];
-    if (j == UP)
-        make_path(gen, 0, -2);
-    else if (j == DOWN)
-        make_path(gen, 0, 2);
-    else if (j == RIGHT)
-        make_path(gen, 2, 0);
-    else if (j == LEFT)
-        make_path(gen, -2, 0);
+    switch_direction(j, gen);
     (*tab)[j] = 0;
     free(tab_oui);
     gen_path(gen);

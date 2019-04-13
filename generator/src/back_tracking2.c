@@ -19,3 +19,23 @@ int check_tab_mouv(int *tab)
         return (1);
     return (0);
 }
+
+void switch_direction(int j, gen_t *gen)
+{
+    switch (j) {
+    case UP:
+        make_path(gen, 0, -2);
+        break;
+    case DOWN:
+        make_path(gen, 0, 2);
+        break;
+    case RIGHT:
+        make_path(gen, 2, 0);
+        break;
+    case LEFT:
+        make_path(gen, -2, 0);
+        break;
+    default:
+        break;
+    }
+}

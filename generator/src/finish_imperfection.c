@@ -59,7 +59,8 @@ void create_map_in_str(gen_t *gen)
     }
     map[k] = '\0';
     printf(map);
-    for (int i = 0; i < gen->size.y - 1; i++)
+    free(map);
+    for (int i = 0; i < gen->size.y; i++)
         free(gen->map[i]);
     free(gen->map);
 }
